@@ -20,5 +20,8 @@
     "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "prisma": "^4.15.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.15.0"
   }
 }
