@@ -63,4 +63,41 @@ create table categories
     primary key (id)
 ) engine innodb;
 
-select * from categories;
+select *
+from categories;
+
+create table wallet
+(
+    id          varchar(100) not null,
+    balance     int          not null,
+    customer_id varchar(100) not null,
+    primary key (id),
+    constraint wallet_customer_id_fk foreign key (customer_id) references customers (id),
+    constraint wallet_customer_id_unique unique (customer_id)
+) engine innodb;
+
+select *
+from wallet;
+
+select *
+from customers;
+
+create table comments
+(
+    id          int          not null auto_increment,
+    customer_id varchar(100) not null,
+    title       varchar(100) not null,
+    description text,
+    primary key (id),
+    constraint comments_customer_id_fk foreign key (customer_id) references customers (id)
+) engine InnoDB;
+
+select * FROm comments;
+
+insert into comments(customer_id, title, description)
+values ('eko', 'Comment 1', 'Sample comment 1'),
+       ('eko', 'Comment 2', 'Sample comment 2'),
+       ('budi', 'Comment 1', 'Sample comment 1'),
+       ('budi', 'Comment 3', 'Sample comment 3');
+
+select * From comments;

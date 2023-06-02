@@ -16,12 +16,33 @@ model sample {
 }
 
 model Customer {
-  id    String @id
-  name  String
-  email String @unique
-  phone String @unique
+  id       String    @id @db.VarChar(100)
+  name     String
+  email    String    @unique
+  phone    String    @unique
+  wallet   Wallet?
+  comments Comment[]
 
   @@map("customers")
+}
+
+model Comment {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(200)
+  description String?  @db.Text
+  customer_id String   @db.VarChar(100)
+  customer    Customer @relation(fields: [customer_id], references: [id])
+
+  @@map("comments")
+}
+
+model Wallet {
+  id          String   @id @db.VarChar(100)
+  balance     Int      @db.Int
+  customer_id String   @unique @db.VarChar(100)
+  customer    Customer @relation(fields: [customer_id], references: [id])
+
+  @@map("wallet")
 }
 
 model Product {
