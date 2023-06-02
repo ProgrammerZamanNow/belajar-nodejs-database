@@ -53,4 +53,14 @@ insert into products(id, name, price, stock, category)
     ('P0009', 'D', 4000, 400, 'K2'),
     ('P0010', 'E', 5000, 500, 'K2');
 
-SELECT * from products;
+SELECT *
+from products;
+
+create table categories
+(
+    id   int          not null auto_increment,
+    name varchar(100) not null,
+    primary key (id)
+) engine innodb;
+
+select * from categories;
