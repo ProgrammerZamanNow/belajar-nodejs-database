@@ -92,7 +92,8 @@ create table comments
     constraint comments_customer_id_fk foreign key (customer_id) references customers (id)
 ) engine InnoDB;
 
-select * FROm comments;
+select *
+FROm comments;
 
 insert into comments(customer_id, title, description)
 values ('eko', 'Comment 1', 'Sample comment 1'),
@@ -100,4 +101,26 @@ values ('eko', 'Comment 1', 'Sample comment 1'),
        ('budi', 'Comment 1', 'Sample comment 1'),
        ('budi', 'Comment 3', 'Sample comment 3');
 
-select * From comments;
+select *
+From comments;
+
+create table likes
+(
+    customer_id varchar(100) not null,
+    product_id  varchar(100) not null,
+    primary key (customer_id, product_id),
+    constraint likes_customer_id_fk foreign key (customer_id) references customers (id),
+    constraint likes_product_id_fk foreign key (product_id) references products (id)
+) engine innodb;
+
+SELECT *
+FROM likes;
+
+create table _loves
+(
+    A varchar(100) not null,
+    B varchar(100) not null,
+    primary key (A, B),
+    constraint customer_loves_fk foreign key (A) references customers (id),
+    constraint product_loves_fk foreign key (B) references products (id)
+) engine innodb;
