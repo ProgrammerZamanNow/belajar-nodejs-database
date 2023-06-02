@@ -11,15 +11,16 @@ datasource db {
 }
 
 model sample {
-  id   String @id
-  name String
+  id          String  @id @db.VarChar(100)
+  name        String  @db.VarChar(100)
+  description String? @db.Text
 }
 
 model Customer {
   id       String    @id @db.VarChar(100)
-  name     String
-  email    String    @unique
-  phone    String    @unique
+  name     String    @db.VarChar(100)
+  email    String    @unique @db.VarChar(100)
+  phone    String    @unique @db.VarChar(100)
   wallet   Wallet?
   comments Comment[]
   likes    Like[]
